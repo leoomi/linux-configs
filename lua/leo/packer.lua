@@ -17,11 +17,16 @@ return require('packer').startup(function(use)
 		"neanias/everforest-nvim",
 		-- Optional; default configuration will be used if setup isn't called.
 		config = function()
-			require("everforest").setup()
+			require("everforest").setup({
+                background = "dark",
+                transparent_background_level = 2,
+                italics = true,
+            })
 		end,
 	})
 
-	
+    use('folke/tokyonight.nvim')
+
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
 	use('ThePrimeagen/harpoon')
