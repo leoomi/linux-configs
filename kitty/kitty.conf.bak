@@ -2341,9 +2341,3 @@ background_opacity 0.85
 #: }}}
 
 #: }}}
-
-
-# BEGIN_KITTY_THEME
-# Tokyo Night Storm
-include current-theme.conf
-# END_KITTY_THEME
