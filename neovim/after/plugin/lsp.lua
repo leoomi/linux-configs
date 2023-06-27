@@ -13,7 +13,7 @@ lsp.ensure_installed({
 	'eslint',
 	-- C#,
 	'csharp_ls',
-	'omnisharp',
+	-- 'omnisharp',
 })
 
 -- (Optional) Configure lua language server for neovim

@@ -104,3 +104,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=~/go/bin:$PATH
 source /usr/share/nvm/init-nvm.sh
 
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

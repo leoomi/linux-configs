@@ -56,6 +56,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec kitty
+bindsym --release button2 kill
 
 # kill focused window
 bindsym $mod+Shift+m kill
@@ -167,7 +168,7 @@ exec --no-startup-id "i3-msg 'workspace $ws1; append_layout /home/leoomi/.config
 exec --no-startup-id "i3-msg 'workspace $ws10; append_layout /home/leoomi/.config/i3/layouts/ws10.json'"
 
 # Assign and startup softwares
-assign [class="Steam"] $ws3
+assign [class="steam"] $ws3
 exec steam
 assign [class="discord"] $ws4
 exec discord
