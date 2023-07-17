@@ -34,6 +34,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec --no-startup-id remotemouse
+
 exec --no-startup-id picom -b
 
 exec --no-startup-id nitrogen --restore
@@ -60,6 +62,7 @@ bindsym --release button2 kill
 
 # kill focused window
 bindsym $mod+Shift+m kill
+bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
