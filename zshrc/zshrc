@@ -101,10 +101,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias reload="feh --bg-scale --zoom fill ~/Downloads/wp12501890-ff16-wallpapers.png; killall conky; conky;"
+
 export PATH=~/go/bin:$PATH
 source /usr/share/nvm/init-nvm.sh
-
-
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)

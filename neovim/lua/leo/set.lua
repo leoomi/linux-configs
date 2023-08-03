@@ -14,7 +14,7 @@ vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = "/home/leoomi/.vim/undodir" -- Hardcoded path, try to use OS var later
+vim.opt.undodir = "/home/leo/.vim/undodir" -- Hardcoded path, try to use OS var later
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false

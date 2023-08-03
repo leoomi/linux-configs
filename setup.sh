@@ -20,12 +20,12 @@ backupAndCreateLink() {
 }
 
 configDir=$HOME/.config
-backupAndCreateLink "$configDir/nvim" "/neovim"
-backupAndCreateLink "$configDir/kitty" "/kitty"
-backupAndCreateLink "$configDir/i3" "/i3"
-backupAndCreateLink "$configDir/picom" "/picom"
-backupAndCreateLink "$configDir/polybar" "/polybar"
-backupAndCreateLink "$HOME/.zshrc" "/zshrc/zshrc"
+# backupAndCreateLink "$configDir/nvim" "/neovim"
+#backupAndCreateLink "$configDir/kitty" "/kitty"
+# backupAndCreateLink "$configDir/i3" "/i3"
+# backupAndCreateLink "$configDir/picom" "/picom"
+# backupAndCreateLink "$configDir/polybar" "/polybar"
+# backupAndCreateLink "$HOME/.zshrc" "/zshrc/zshrc"
 backupAndCreateLink "$configDir/Code/User/settings.json" "/vscode/settings.json"
 backupAndCreateLink "$configDir/Code/User/keybindings.json" "/vscode/keybindings.json"
-
+# backupAndCreateLink "$configDir/conky" "/conky/conk/conky"
