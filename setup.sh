@@ -20,7 +20,7 @@ backupAndCreateLink() {
 }
 
 configDir=$HOME/.config
-backupAndCreateLink "$configDir/nvim" "/neovim"
+# backupAndCreateLink "$configDir/nvim" "/neovim"
 backupAndCreateLink "$configDir/kitty" "/kitty"
 backupAndCreateLink "$configDir/i3" "/i3"
 backupAndCreateLink "$configDir/picom" "/picom"
