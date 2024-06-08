@@ -74,3 +74,9 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>cf", ":Format<cr>", opts)
 keymap("n", "<leader>q", ":Bdelete<cr>", opts)
 keymap("n", "<leader>w", ":w<cr>", opts)
+
+-- Projects commnds
+keymap("n", "<leader>P", ":Telescope projects<cr>", opts)
+keymap("n", "<leader>pa", ":AddProject<cr>", opts)
+keymap("n", "<leader>pr", ":ProjectRoot<cr>", opts)
+
