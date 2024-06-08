@@ -103,4 +103,3 @@ telescope.setup {
   },
 }
 
-telescope.load_extension("projects")

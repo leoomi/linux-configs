@@ -88,5 +88,6 @@ nvim_tree.setup {
         },
       }
     }
-  }
+  },
+  respect_buf_cwd = true,
 }
