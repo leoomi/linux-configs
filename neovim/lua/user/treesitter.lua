@@ -11,9 +11,9 @@ configs.setup {
   },
   indent = { enable = true, disable = { "yaml" } },
   rainbow = {
-    enable = true,
+    enable = false,
     -- list of languages you want to disable the plugin for
-    disable = { "jsx" },
+    disable = { "jsx", "tsx" },
     -- Which query to use for finding delimiters
     query = 'rainbow-parens',
     -- Highlight the entire buffer all at once
