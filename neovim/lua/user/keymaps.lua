@@ -73,6 +73,7 @@ keymap("n", "<leader>F", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>cf", ":Format<cr>", opts)
 keymap("n", "<leader>q", ":Bdelete<cr>", opts)
+keymap("n", "<leader>Q", ":qa<cr>", opts)
 keymap("n", "<leader>w", ":w<cr>", opts)
 
 -- Projects commnds
