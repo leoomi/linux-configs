@@ -2,7 +2,7 @@ local servers = {
 	"lua_ls",
 	"cssls",
 	"html",
-	"tsserver",
+	"ts_ls",
 	"pyright",
 	"bashls",
 	"jsonls",
@@ -50,3 +50,8 @@ for _, server in pairs(servers) do
 
 	lspconfig[server].setup(opts)
 end
+
+require("lspconfig")["gdscript"].setup({
+	name = "godot",
+	cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
+})
