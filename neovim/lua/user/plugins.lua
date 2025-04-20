@@ -90,6 +90,9 @@ local plugins = {
 
   -- git
   "lewis6991/gitsigns.nvim",
+
+  -- debugging
+  "mfussenegger/nvim-dap"
 }
 local opts = {}
 
