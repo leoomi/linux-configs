@@ -7,7 +7,7 @@ local servers = {
   "bashls",
   "jsonls",
   "yamlls",
-  "rust-analyzer"
+  "rust_analyzer"
 }
 
 local settings = {
