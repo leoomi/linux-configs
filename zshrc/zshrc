@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias bw_pat="bw get password 2be28bfd-37a6-4ff0-8317-afe0012624"
 
 export PATH=~/go/bin:$PATH
 export PATH=~/.local/bin:$PATH
