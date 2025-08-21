@@ -27,6 +27,7 @@ backupAndCreateLink "$configDir/picom" "/picom"
 backupAndCreateLink "$configDir/polybar" "/polybar"
 backupAndCreateLink "$HOME/.zshrc" "/zshrc/zshrc"
 backupAndCreateLink "$HOME/.tmux.conf" "/tmux/tmux.conf"
+backupAndCreateLink "$HOME/.config/hypr" "/hyprland"
 backupAndCreateLink "$configDir/Code/User/settings.json" "/vscode/settings.json"
 backupAndCreateLink "$configDir/Code/User/keybindings.json" "/vscode/keybindings.json"
 
