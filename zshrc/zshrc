@@ -104,10 +104,14 @@ alias bw_pat="bw get password 2be28bfd-37a6-4ff0-8317-afe0012624"
 
 export PATH=~/go/bin:$PATH
 export PATH=~/.local/bin:$PATH
+
 export WHOME=/mnt/c/Users/LEOOMI
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source /usr/share/nvm/init-nvm.sh
+>>>>>>> 20e076b (Finishes arch ricing)
 
 # Only changing the escape key to `jk` in insert mode, we still
 # keep using the default keybindings `^[` in other modes
