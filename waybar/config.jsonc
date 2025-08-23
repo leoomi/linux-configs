@@ -13,7 +13,7 @@
     "cpu",
     "memory",
     "disk",
-    "temperature"
+    "temperature",
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -25,7 +25,7 @@
     "pulseaudio",
     "network",
     "battery",
-    "battery#bat2"
+    "upower",
   ],
   /* === Modules Left === */
   "custom/archicon": {
@@ -35,17 +35,17 @@
   },
   "clock": {
     "timezone": "America/Sao_Paulo",
-    "format": "{:%H:%M  %d/%m}",
+    "format": "{:%I:%M  %d/%m}",
     "tooltip-format": "{calendar}",
     "calendar": {
       "mode": "month"
     }
   },
   "cpu": {
-    "format": "{usage}% "
+    "format": "{usage}% ",
   },
   "memory": {
-    "format": "{used}/{total}GB  Swap: {swapPercentage}%"
+    "format": "{used}/{total}GB ",
   },
   "disk": {
     "format": "{percentage_free}% ",
@@ -101,7 +101,7 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "{percent}% {icon}",
-    "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
+    "format-icons": ["🌕", "🌖", "🌗", "🌘", "🌑"]
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",
@@ -134,9 +134,9 @@
     "format-icons": ["", "", "", "", ""],
     "max-length": 25
   },
-  "battery#bat2": {
-    "interval": 10,
+  "upower": {
     "format": "{time}",
-    "format-time": "{H}:{m}"
-  }
+    "tooltip": false,
+    "show-icon": false,
+  },
 }

@@ -29,6 +29,7 @@ window#waybar.hidden {
 #network,
 #language,
 #battery,
+#upower,
 #tray
 {
   color: @text;
@@ -53,7 +54,7 @@ window#waybar.hidden {
 /* Separation to the rigth */
 #clock,
 #temperature,
-#battery.bat2,
+#upower,
 #tray {
   margin-right: 8px;
   border-top-right-radius: 16px;
@@ -170,7 +171,7 @@ window#waybar.hidden {
   padding-right: 4px;
 }
 
-#battery.bat2 {
+#upower {
   color: @rosewater;
   padding-left: 0px;
   padding-right: 15px;
