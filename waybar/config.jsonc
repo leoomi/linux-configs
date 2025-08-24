@@ -25,7 +25,7 @@
     "pulseaudio",
     "network",
     "battery",
-    "upower",
+    "battery#bat2",
   ],
   /* === Modules Left === */
   "custom/archicon": {
@@ -35,7 +35,7 @@
   },
   "clock": {
     "timezone": "America/Sao_Paulo",
-    "format": "{:%I:%M  %d/%m}",
+    "format": "{:%H:%M  %d/%m}",
     "tooltip-format": "{calendar}",
     "calendar": {
       "mode": "month"
@@ -101,7 +101,7 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "{percent}% {icon}",
-    "format-icons": ["🌕", "🌖", "🌗", "🌘", "🌑"]
+    "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",
@@ -134,9 +134,9 @@
     "format-icons": ["", "", "", "", ""],
     "max-length": 25
   },
-  "upower": {
+  "battery#bat2": {
+    "interval": 10,
     "format": "{time}",
-    "tooltip": false,
-    "show-icon": false,
+    "format-time": "{H}:{m}"
   },
 }
