@@ -71,7 +71,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-vi-mode zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
+plugins=(git zsh-vi-mode zsh-syntax-highlighting fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,6 +106,9 @@ export PATH=~/go/bin:$PATH
 export PATH=~/.local/bin:$PATH
 
 source /usr/share/nvm/init-nvm.sh
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # bindkey -v
 # Only changing the escape key to `jk` in insert mode, we still
