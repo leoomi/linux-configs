@@ -23,7 +23,7 @@ hyprpaper
 hyprpolkitagent
 intel-ucode
 kitty
-libappindicator-gtk3
+libappindicator
 libgirepository
 libnotify
 linux
@@ -64,7 +64,6 @@ wl-clipboard
 wofi
 xdg-desktop-portal-hyprland
 yay
-yay-debug
 zip
 zsh
 zsh-autosuggestions
