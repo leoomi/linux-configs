@@ -6,10 +6,12 @@ bitwarden-cli
 brightnessctl
 chrono-date
 cmake
+dmidecode
 efibootmgr
 firefox
+fprintd
+fwupd
 fzf
-gcc
 ghostty
 git
 glib2-devel
@@ -21,6 +23,7 @@ hyprland
 hyprlock
 hyprpaper
 hyprpolkitagent
+imagemagick
 intel-ucode
 kitty
 libappindicator
@@ -29,6 +32,7 @@ libnotify
 linux
 linux-firmware
 llvm
+ly
 man-db
 man-pages
 meson
@@ -44,11 +48,14 @@ otf-font-awesome
 pipewire-alsa
 pipewire-audio
 pipewire-pulse
+powerline-fonts
 pulseaudio-alsa
 ripgrep
 scdoc
+sof-firmware
 sudo
 swaync
+texinfo
 tlp
 tlp-rdw
 tmux
@@ -56,6 +63,7 @@ tree
 ttf-jetbrains-mono-nerd
 unzip
 uwsm
+vi
 vim
 w3m
 waybar
@@ -64,6 +72,7 @@ wl-clipboard
 wofi
 xdg-desktop-portal-hyprland
 yay
+yay-debug
 zip
 zsh
 zsh-autosuggestions
