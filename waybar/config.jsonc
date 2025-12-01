@@ -13,7 +13,7 @@
     "cpu",
     "memory",
     "disk",
-    "temperature",
+    "temperature"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -25,7 +25,7 @@
     "pulseaudio",
     "network",
     "battery",
-    "battery#bat2",
+    "battery#bat2"
   ],
   /* === Modules Left === */
   "custom/archicon": {
@@ -42,10 +42,10 @@
     }
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": "{usage}% "
   },
   "memory": {
-    "format": "{used}/{total}GB ",
+    "format": "{used}/{total}GB  Swap: {swapPercentage}%"
   },
   "disk": {
     "format": "{percentage_free}% ",
@@ -138,5 +138,5 @@
     "interval": 10,
     "format": "{time}",
     "format-time": "{H}:{m}"
-  },
+  }
 }
