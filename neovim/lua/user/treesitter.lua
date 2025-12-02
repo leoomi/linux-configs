@@ -1,5 +1,6 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup {
+  prefer_git = true,
   ensure_installed = "all",
   sync_install = false,
   ignore_install = { "ipkg", "norg" }, -- List of parsers to ignore installing

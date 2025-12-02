@@ -60,7 +60,6 @@ local plugins = {
     }
   },
   "ThePrimeagen/harpoon",
-  "rmagatti/auto-session",
 
   -- CMP plugins
   "hrsh7th/nvim-cmp",         -- The completion plugin
