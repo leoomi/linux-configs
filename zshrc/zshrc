@@ -104,6 +104,7 @@ alias bw_pat="bw get password 2be28bfd-37a6-4ff0-8317-afe0012624"
 
 export PATH=~/go/bin:$PATH
 export PATH=~/.local/bin:$PATH
+. "$HOME/.cargo/env"
 
 source /usr/share/nvm/init-nvm.sh
 
