@@ -21,15 +21,6 @@ if not status_ok then
 end
 
 local plugins = {
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     -- load the colorscheme here
-  --     vim.cmd([[colorscheme tokyonight]])
-  --   end,
-  -- },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -37,14 +28,13 @@ local plugins = {
   },
   "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- useful lua functions used ny lots of plugins
-  "windwp/nvim-autopairs", -- Plugin for easier parenthesis, quotes, etc.
   "numToStr/Comment.nvim", -- Easily comment stuff
   "kyazdani42/nvim-web-devicons",
   "kyazdani42/nvim-tree.lua",
   "moll/vim-bbye",
-  { "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
+  { "akinsho/bufferline.nvim",             dependencies = "nvim-tree/nvim-web-devicons" },
   "akinsho/toggleterm.nvim",
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",                                opts = {} },
   "ahmedkhalf/project.nvim",
   {
     "folke/which-key.nvim",
@@ -60,26 +50,133 @@ local plugins = {
     }
   },
   "ThePrimeagen/harpoon",
-  "rmagatti/auto-session",
-
-  -- CMP plugins
-  "hrsh7th/nvim-cmp",         -- The completion plugin
-  "hrsh7th/cmp-buffer",       -- buffer completions
-  "hrsh7th/cmp-path",         -- path completions
-  "hrsh7th/cmp-cmdline",      -- cmdline completions
-  "hrsh7th/cmp-nvim-lsp",     -- LSP completions
-  "hrsh7th/cmp-nvim-lua",     -- Lua completions
-  "saadparwaiz1/cmp_luasnip", -- snippet completions
-
-  -- Snippets
-  "L3MON4D3/LuaSnip",             --snippet engine
-  "rafamadriz/friendly-snippets", -- a bunch of snippets to use
 
   -- LSP
-  "neovim/nvim-lspconfig",             -- enable LSP
-  "williamboman/mason.nvim",           -- simple to use language server installer
-  "williamboman/mason-lspconfig.nvim", -- simple to use language server installer
   "nvimtools/none-ls.nvim",
+  "nvimtools/none-ls-extras.nvim",
+  {
+    "mason-org/mason.nvim",
+    opts = {}
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+  },
+  {
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = { 'rafamadriz/friendly-snippets' },
+
+    -- use a release tag to download pre-built binaries
+    version = '1.*',
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      --
+      -- See :h blink-cmp-config-keymap for defining your own keymap
+      keymap = {
+        preset = 'default',
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+        ["<CR>"] = { 'select_and_accept', 'fallback' },
+      },
+
+      appearance = {
+        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = 'mono'
+      },
+
+      -- (Default) Only show the documentation popup when manually triggered
+      completion = { documentation = { auto_show = false } },
+
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+
+      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+      --
+      -- See the fuzzy documentation for more information
+      fuzzy = { implementation = "prefer_rust_with_warning" }
+    },
+    opts_extend = { "sources.default" },
+  },
+  {
+    'saghen/blink.pairs',
+    version = '*', -- (recommended) only required with prebuilt binaries
+
+    -- download prebuilt binaries from github releases
+    dependencies = 'saghen/blink.download',
+    -- OR build from source, requires nightly:
+    -- https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
+
+    --- @module 'blink.pairs'
+    --- @type blink.pairs.Config
+    opts = {
+      mappings = {
+        -- you can call require("blink.pairs.mappings").enable()
+        -- and require("blink.pairs.mappings").disable()
+        -- to enable/disable mappings at runtime
+        enabled = true,
+        cmdline = true,
+        -- or disable with `vim.g.pairs = false` (global) and `vim.b.pairs = false` (per-buffer)
+        -- and/or with `vim.g.blink_pairs = false` and `vim.b.blink_pairs = false`
+        disabled_filetypes = {},
+        -- see the defaults:
+        -- https://github.com/Saghen/blink.pairs/blob/main/lua/blink/pairs/config/mappings.lua#L14
+        pairs = {},
+      },
+      highlights = {
+        enabled = true,
+        -- requires require('vim._extui').enable({}), otherwise has no effect
+        cmdline = true,
+        groups = {
+          'BlinkPairsOrange',
+          'BlinkPairsPurple',
+          'BlinkPairsBlue',
+        },
+        unmatched_group = 'BlinkPairsUnmatched',
+
+        -- highlights matching pairs under the cursor
+        matchparen = {
+          enabled = true,
+          -- known issue where typing won't update matchparen highlight, disabled by default
+          cmdline = false,
+          -- also include pairs not on top of the cursor, but surrounding the cursor
+          include_surrounding = false,
+          group = 'BlinkPairsMatchParen',
+          priority = 250,
+        },
+      },
+      debug = false,
+    }
+  },
 
   -- Telescope
   "nvim-telescope/telescope.nvim",
@@ -90,8 +187,6 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate,"
   },
-  "HiPhish/nvim-ts-rainbow2",
-  "JoosepAlviste/nvim-ts-context-commentstring",
 
   -- git
   "lewis6991/gitsigns.nvim",
@@ -111,10 +206,10 @@ local plugins = {
       "TmuxNavigatorProcessList",
     },
     keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   }

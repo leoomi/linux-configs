@@ -68,10 +68,8 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
---keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<leader>F", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-keymap("n", "<leader>cf", ":Format<cr>", opts)
 keymap("n", "<leader>q", ":Bdelete<cr>", opts)
 keymap("n", "<leader>Q", ":qa<cr>", opts)
 keymap("n", "<leader>w", ":w<cr>", opts)
@@ -81,3 +79,19 @@ keymap("n", "<leader>P", ":Telescope projects<cr>", opts)
 keymap("n", "<leader>pa", ":AddProject<cr>", opts)
 keymap("n", "<leader>pr", ":ProjectRoot<cr>", opts)
 
+local function addKeyMapDesc(desc)
+  opts.desc = desc
+  return opts
+end
+
+keymap('n', 'gd', ':lua vim.lsp.buf.definition()<cr>', addKeyMapDesc('Go to Definition'))
+keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>', addKeyMapDesc('Go to Declaration'))
+keymap('n', 'grr', ':lua vim.lsp.buf.references()<cr>', addKeyMapDesc('View References'))
+keymap('n', 'gi', ':lua vim.lsp.buf.implementation()<cr>', addKeyMapDesc('Go to Implementation'))
+keymap('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>', addKeyMapDesc('Rename'))
+keymap('n', '<leader>cf', ':lua vim.lsp.buf.format()<cr>', addKeyMapDesc('Format'))
+keymap('v', '<leader>cf', ':lua vim.lsp.buf.format()<cr>', addKeyMapDesc('Format'))
+keymap('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<cr>', addKeyMapDesc('Code Action'))
+keymap('v', '<leader>ca', ':lua vim.lsp.buf.code_action()<cr>', addKeyMapDesc('Code Action'))
+keymap('n', 'K', ':lua vim.lsp.buf.hover()<cr>', addKeyMapDesc('Hover Documentation'))
+keymap('i', '<C-s>', ':lua vim.lsp.buf.signature_help()<cr>', addKeyMapDesc('Signature Help'))
