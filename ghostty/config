@@ -3,3 +3,4 @@ background-opacity = 0.8
 background-blur = true
 font-size = 12.0
 confirm-close-surface = false
+command = /usr/bin/zsh -c tmux

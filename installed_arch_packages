@@ -3,6 +3,7 @@ alsa-utils
 base
 base-devel
 bitwarden-cli
+blender
 brightnessctl
 chrono-date
 cmake
@@ -16,6 +17,7 @@ ghostty
 git
 glib2-devel
 gobject-introspection
+godot
 google-chrome
 grub
 htop
@@ -26,6 +28,7 @@ hyprpolkitagent
 imagemagick
 intel-ucode
 kitty
+lf
 libappindicator
 libgirepository
 libnotify
@@ -61,10 +64,12 @@ tlp-rdw
 tmux
 tree
 ttf-jetbrains-mono-nerd
+udisks2
 unzip
 uwsm
 vi
 vim
+vulkan-intel
 w3m
 waybar
 wireplumber
