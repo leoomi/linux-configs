@@ -26,7 +26,6 @@ hyprlock
 hyprpaper
 hyprpolkitagent
 imagemagick
-intel-ucode
 kitty
 lf
 libappindicator
@@ -69,7 +68,6 @@ unzip
 uwsm
 vi
 vim
-vulkan-intel
 w3m
 waybar
 wireplumber
