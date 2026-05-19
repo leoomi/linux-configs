@@ -16,24 +16,11 @@ local colors = require("frappe")
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-  output    = "DP-1",
-  mode      = "1920x1080@60",
-  position  = "0x0",
-  scale     = 1,
-  transform = 2
+  output   = "eDP-1",
+  mode     = "1920x1080@60",
+  position = "0x0",
+  scale    = 1,
 })
-
-hl.monitor({
-  output        = "HDMI-A-1",
-  mode          = "3840x2160@120",
-  position      = "1920x0",
-  scale         = 1,
-  cm            = "hdr",
-  bitdepth      = 10,
-  sdrbrightness = 2.0,
-  sdrsaturation = 1.1
-})
-
 
 ---------------------
 ---- MY PROGRAMS ----
