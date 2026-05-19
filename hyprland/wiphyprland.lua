@@ -320,6 +320,13 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
+-- Power and session
+hl.bind("Control_l + Alt_l + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + Delete", hl.dsp.exec_cmd("hyprlock & disown & sleep 1 && systemctl suspend"))
+hl.bind(mainMod .. " + SHIFT + Delete", hl.dsp.exec_cmd("systemctl poweroff"))
+hl.bind(mainMod .. " + Control_l + Delete", hl.dsp.exec_cmd("systemctl reboot"))
+hl.bind(mainMod .. " + Alt_l+ Delete", hl.dsp.exec_cmd("hyprctl dispatch exit"))
+
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
