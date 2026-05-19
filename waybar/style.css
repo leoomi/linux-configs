@@ -54,6 +54,7 @@ window#waybar.hidden {
 #clock,
 #temperature,
 #battery.bat2,
+#network,
 #tray {
   margin-right: 8px;
   border-top-right-radius: 16px;
