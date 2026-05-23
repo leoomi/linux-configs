@@ -42,13 +42,17 @@ local menu        = "wofi --show drun"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-  hl.exec_cmd(terminal)
+  hl.exec_cmd("hyprpaper")
   hl.exec_cmd("systemctl --user enable --now hyprpolkitagent.service")
   hl.exec_cmd("swaync")
   hl.exec_cmd("waybar")
   hl.exec_cmd("nm-applet --indicator")
-  -- TODO hl.exec_cmd("[workspace 1 silent] google-chrome-stable --disable-session-crashed-bubble")
-  -- TODO hl.exec_cmd("[workspace 2 silent] ghostty")
+  hl.exec_cmd("google-chrome-stable --disable-session-crashed-bubble", {
+    workspace = 1
+  })
+  hl.exec_cmd("ghostty", {
+    workspace = 2
+  })
 end)
 
 
@@ -221,7 +225,7 @@ hl.config({
 hl.config({
   input = {
     kb_layout    = "us",
-    kb_variant   = "",
+    kb_variant   = "intl",
     kb_model     = "",
     kb_options   = "",
     kb_rules     = "",
@@ -321,11 +325,11 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tru
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
 -- Power and session
-hl.bind("Control_l + Alt_l + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + Delete", hl.dsp.exec_cmd("hyprlock & disown & sleep 1 && systemctl suspend"))
 hl.bind(mainMod .. " + SHIFT + Delete", hl.dsp.exec_cmd("systemctl poweroff"))
-hl.bind(mainMod .. " + Control_l + Delete", hl.dsp.exec_cmd("systemctl reboot"))
-hl.bind(mainMod .. " + Alt_l+ Delete", hl.dsp.exec_cmd("hyprctl dispatch exit"))
+hl.bind(mainMod .. " + CTRL + Delete", hl.dsp.exec_cmd("systemctl reboot"))
+hl.bind(mainMod .. " + ALT + Delete", hl.dsp.exec_cmd("hyprctl dispatch exit"))
 
 
 --------------------------------
