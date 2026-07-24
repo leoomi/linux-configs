@@ -16,22 +16,21 @@ local colors = require("frappe")
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-  output    = "DP-1",
-  mode      = "1920x1080@60",
-  position  = "0x0",
-  scale     = 1,
-  transform = 2
+  output   = "DP-1",
+  mode     = "1920x1080@60",
+  position = "0x0",
+  scale    = 1,
 })
 
 hl.monitor({
   output        = "HDMI-A-1",
-  mode          = "3840x2160@120",
+  mode          = "3840x2160@119.88Hz",
   position      = "1920x0",
   scale         = 1,
   cm            = "hdr",
   bitdepth      = 10,
-  sdrbrightness = 2.0,
-  sdrsaturation = 1.1
+  sdrbrightness = 0.8,
+  sdrsaturation = 0.8
 })
 
 
@@ -55,13 +54,26 @@ local menu        = "wofi --show drun"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-  hl.exec_cmd(terminal)
+  hl.exec_cmd("hyprpaper")
   hl.exec_cmd("systemctl --user enable --now hyprpolkitagent.service")
   hl.exec_cmd("swaync")
   hl.exec_cmd("waybar")
+  hl.exec_cmd("blueman-applet")
   hl.exec_cmd("nm-applet --indicator")
-  -- TODO hl.exec_cmd("[workspace 1 silent] google-chrome-stable --disable-session-crashed-bubble")
-  -- TODO hl.exec_cmd("[workspace 2 silent] ghostty")
+  hl.exec_cmd("hyprland-monitor-attached ~/.config/hypr/monitor-attach.sh")
+  hl.exec_cmd("hyprpm reload -n")
+  hl.exec_cmd("ghostty", {
+    workspace = "special:magic"
+  })
+  hl.exec_cmd("discord", {
+    workspace = 4
+  })
+  hl.exec_cmd("steam", {
+    workspace = 1
+  })
+  hl.exec_cmd("google-chrome-stable --disable-session-crashed-bubble", {
+    workspace = 2
+  })
 end)
 
 
@@ -145,6 +157,12 @@ hl.config({
 
   animations = {
     enabled = true,
+  },
+  plugin = {
+    hyprbars = {
+      bar_height = 20,
+      on_double_click = "hyprctl dispatch fullscreen 1",
+    },
   },
 })
 
@@ -234,14 +252,14 @@ hl.config({
 hl.config({
   input = {
     kb_layout    = "us",
-    kb_variant   = "",
+    kb_variant   = "intl",
     kb_model     = "",
     kb_options   = "",
     kb_rules     = "",
 
     follow_mouse = 1,
 
-    sensitivity  = 0, -- -1.0 - 1.0, 0 means no modification.
+    sensitivity  = -0.5, -- -1.0 - 1.0, 0 means no modification.
 
     touchpad     = {
       natural_scroll = false,
@@ -272,7 +290,8 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind("ALT + V", hl.dsp.layout("togglesplit")) -- dwindle only
@@ -288,10 +307,14 @@ hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 
 -- Move with HJKL
-hl.bind(mainMod .. " + h", hl.dsp.window.move({ direction = "left" }))
-hl.bind(mainMod .. " + l", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + k", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. "+ SHIFT + h", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. "+ SHIFT + l", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. "+ SHIFT + k", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. "+ SHIFT + j", hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. "+ SHIFT + left", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. "+ SHIFT + down", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. "+ SHIFT + up", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. "+ SHIFT + right", hl.dsp.window.move({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -300,6 +323,10 @@ for i = 1, 10 do
   hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
   hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
+
+-- Move workspace to another monitor
+hl.bind(mainMod .. " + CTRL + h", hl.dsp.workspace.move({ monitor = "DP-1" }))
+hl.bind(mainMod .. " + CTRL + l", hl.dsp.workspace.move({ monitor = "HDMI-A-1" }))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
@@ -310,10 +337,10 @@ hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-hl.bind("mouse:276", hl.dsp.window.drag(), { mouse = true })
-hl.bind("mouse:275", hl.dsp.window.resize(), { mouse = true })
+-- hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+-- hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+-- hl.bind("mouse:276", hl.dsp.window.drag(), { mouse = true })
+-- hl.bind("mouse:275", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
@@ -338,8 +365,15 @@ hl.bind("Control_l + Alt_l + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + Delete", hl.dsp.exec_cmd("hyprlock & disown & sleep 1 && systemctl suspend"))
 hl.bind(mainMod .. " + SHIFT + Delete", hl.dsp.exec_cmd("systemctl poweroff"))
 hl.bind(mainMod .. " + Control_l + Delete", hl.dsp.exec_cmd("systemctl reboot"))
-hl.bind(mainMod .. " + Alt_l+ Delete", hl.dsp.exec_cmd("hyprctl dispatch exit"))
+hl.bind(mainMod .. " + ALT + Delete", hl.dsp.exec_cmd("hyprctl dispatch exit"))
 
+hl.plugin.hyprbars.add_button({
+  bg_color = "rgb(ff4040)",
+  fg_color = "rgb(ffffff)",
+  size = 10,
+  icon = "X",
+  action = "hyprctl dispatch 'hl.dsp.window.close()'",
+})
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -398,5 +432,39 @@ hl.window_rule({
   },
   float = true,
   pin = true,
-  move = "{ 20, 60 }"
+  size = { 480, 270 },
+  move = { "monitor_w - 520", "monitor_h - 290" }
+})
+
+hl.window_rule({
+  name = "steam",
+  match = {
+    initial_class = "steam",
+  },
+  workspace = 1
+})
+
+hl.window_rule({
+  name = "discord",
+  match = {
+    initial_class = "discord",
+  },
+  workspace = 4
+})
+
+hl.workspace_rule({
+  workspace = "1",
+  monitor = "HDMI-A-1"
+})
+
+for i = 2, 10 do
+  hl.workspace_rule({
+    workspace = tostring(i),
+    monitor = "DP-1"
+  })
+end
+
+hl.workspace_rule({
+  workspace = "special:magic",
+  monitor = "DP-1"
 })

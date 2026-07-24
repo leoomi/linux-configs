@@ -59,7 +59,7 @@
   },
   /* === Modules Center === */
   "hyprland/workspaces": {
-    "format": "{icon} {id}",
+    "format": "{icon} {name}",
     "format-icons": {
       "default": "",
       "active": ""
